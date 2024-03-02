@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport", content="width=device-width, initial-scale=1.0">
-        <title>Space Invaders</title>
-        <link rel="stylesheet" href="space.css">
-        <script src="space.js"></script>
-    </head>
 
-    <body>
-        <h1>Space Invaders</h1>
-        <canvas id="board"></canvas>
-    </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" , content="width=device-width, initial-scale=1.0">
+  <title>Space Invaders</title>
+  <link rel="stylesheet" href="space.css">
+  <script src="space.js"></script>
+  <script src="stetical.js"></script>
+</head>
+
+<body>
+  <!-- Div que vai aparecer na frente -->
+  <div id="overlay"></div>
+
+  <!-- O pop-up -->
+  <div id="popup">
+    <h2 id="title">GAME OVER</h2>
+    <button class="popup-btn" onclick="okClicked()">Try again</button>
+    <button class="popup-btn" onclick="cancelClicked()">Exit</button>
+  </div>
+
+  <h1>Space Invaders</h1>
+
+  <button id="bullet-selector" class="bullet-selector">
+    <img src="bullet_rifle.png" alt="" class="img_shot">
+  </button>
+  <canvas id="board"></canvas>
+</body>
+
 </html>
