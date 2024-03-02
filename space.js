@@ -308,7 +308,7 @@ function shoot(e) {
     return;
   }
 
-  if (e.code == "Space") {
+  if (e.code == "Space"  || e.code == "KeyW") {
     //shoot
     let bullet = {
       x: ship.x + shipWidth * 15 / 32,
