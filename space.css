@@ -11,8 +11,8 @@ body {
 
 #board {
   background: url(../Space-Game/2d_background.gif);
-  background-size: 512px 512px
-}
+  background-size: 968px 1024px;
+};
 
 .bullet-selector {
   width: auto;

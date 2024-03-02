@@ -36,11 +36,11 @@ let alienImg;
 let alienRows = 2;
 let alienColumns = 3;
 let alienCount = 0; //number of aliens to defeat
-let alienVelocityX = 1; //alien moving speed
+let alienVelocityX = 3; //alien moving speed
 
 //bullets
 let bulletArray = [];
-let bulletVelocityY = -10; //bullet moving speed
+let bulletVelocityY = -20; //bullet moving speed
 let rate = 375; // cadence of the bullet in ms
 
 // let lastChangebullet;
@@ -232,7 +232,7 @@ function singleShot() {
   for (let i = 0; i < bulletArray.length; i++) {
     let bullet = bulletArray[i];
     bullet.y += bulletVelocityY;
-    context.fillStyle = "red";
+    context.fillStyle = "yellow";
     context.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
 
     bulletCollision(bullet);
@@ -246,11 +246,12 @@ function doubleShot() {
   for (let i = 0; i < bulletArray.length; i++) {
 
     let bullet = bulletArray[i];
-    bullet.y += bulletVelocityY * 1.5;        // Re update the velocity of the bullet
-    bullet.y2 += bulletVelocityY * 1.5;       // Re update the velocity of the bullet
-    bullet.x = ship.x + shipWidth * 13 / 32;  //Re update the out of the bullet
+    bullet.y += bulletVelocityY * 1.25;        // Re update the velocity of the bullet
+    bullet.y2 += bulletVelocityY * 1.25;       // Re update the velocity of the bullet
+    bullet.x = ship.x + shipWidth * 12 / 32;  //Re update the out of the bullet
     bullet.x2 = ship.x + shipWidth * 17 / 32;  //Re update the out of the bullet
     context.fillStyle = "white";
+    bullet.width = tileSize / 6;
 
     context.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
     context.fillRect(bullet.x2, bullet.y2, bullet.width, bullet.height)
@@ -315,7 +316,7 @@ function shoot(e) {
       x2: ship.x + shipWidth * 15 / 32,
       y: ship.y,
       y2: ship.y,
-      width: tileSize / 8,
+      width: tileSize / 4,
       height: tileSize / 2,
       used: false
     }
