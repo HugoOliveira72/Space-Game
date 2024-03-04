@@ -10,10 +10,10 @@ let boardHeight = tileSize * rows; // 32 * 16
 let context;
 
 //ship
-let shipWidth = tileSize*2;
-let shipHeight = tileSize*2;
-let shipX = tileSize * columns/2 - tileSize;
-let shipY = tileSize * rows - tileSize*2;
+let shipWidth = tileSize * 2;
+let shipHeight = tileSize * 2;
+let shipX = tileSize * columns / 2 - tileSize;
+let shipY = tileSize * rows - tileSize * 2;
 
 let ship = {
   x: shipX,
@@ -27,8 +27,8 @@ let shipVelocityX = tileSize; //ship moving speed
 
 //aliens
 let alienArray = [];
-let alienWidth = tileSize*2;
-let alienHeight = tileSize*2;
+let alienWidth = tileSize * 2;
+let alienHeight = tileSize * 2;
 let alienX = tileSize;
 let alienY = tileSize;
 let alienImg;
@@ -54,44 +54,39 @@ let score = 0;
 let gameOver = false;
 
 let monsterNumber = 0;
-window.onload = function() {
-    board = document.getElementById("board");
-    board.width = boardWidth;
-    board.height = boardHeight;
-    context = board.getContext("2d"); //used for drawing on the board
+window.onload = function () {
+  board = document.getElementById("board");
+  board.width = boardWidth;
+  board.height = boardHeight;
+  context = board.getContext("2d"); //used for drawing on the board
 
   //draw initial ship
   context.fillStyle = "green";
   context.fillRect(ship.x, ship.y, ship.width, ship.height);
 
-    //load images
-    shipImg = new Image();
-    shipImg.src = "./ship.png";
-    shipImg.onload = function() {
-        context.drawImage(shipImg, ship.x, ship.y, ship.width, ship.height);
-    }
+  //load images
+  shipImg = new Image();
+  shipImg.src = "./ship.png";
+  shipImg.onload = function () {
+    context.drawImage(shipImg, ship.x, ship.y, ship.width, ship.height);
+  }
 
-    
-    alienImg = new Image();
-    alienImg.src = "./alien.png";
-    alienImg2 = new Image();
-    alienImg2.src = "./alien2.png";
-    alienImg3 = new Image();
-    alienImg3.src = "./alien3.png";
-    alienImg4 = new Image();
-    alienImg4.src = "./alien4.png";
-    alienImg5 = new Image();
-    alienImg5.src = "./alien5.png";
-    alienImg6 = new Image();
-    alienImg6.src = "./alien6.png";
-    alienImg7 = new Image();
-    alienImg7.src = "./alien7.png";
-    alienImg8 = new Image();
-    alienImg8.src = "./alien8.png";
-    // alienImg9 = new Image();
-    // alienImg9.src = "./alien9.png";
-
-    createAliens();
+  alienImg = new Image();
+  alienImg.src = "./alien.png";
+  alienImg2 = new Image();
+  alienImg2.src = "./alien2.png";
+  alienImg3 = new Image();
+  alienImg3.src = "./alien3.png";
+  alienImg4 = new Image();
+  alienImg4.src = "./alien4.png";
+  alienImg5 = new Image();
+  alienImg5.src = "./alien5.png";
+  alienImg6 = new Image();
+  alienImg6.src = "./alien6.png";
+  alienImg7 = new Image();
+  alienImg7.src = "./alien7.png";
+  alienImg8 = new Image();
+  createAliens();
 
   requestAnimationFrame(update);
   document.addEventListener("keydown", moveShip);
@@ -115,7 +110,7 @@ function update() {
 
   if (gameOver) {
     // show up the overlay (the gray background)
-    document.getElementById('overlay').style.display = 'block'; 
+    document.getElementById('overlay').style.display = 'block';
     // show up the pop up 
     document.getElementById('popup').style.display = 'block';
     return;
@@ -137,44 +132,42 @@ function update() {
         alienVelocityX *= -1;
         alien.x += alienVelocityX * 2;
 
-                //move all aliens up by one row
-                for (let j = 0; j < alienArray.length; j++) {
-                    alienArray[j].y += alienHeight;
-                }
-            }
-            
-            if(monsterNumber == 0){
-                context.drawImage(alienImg, alien.x, alien.y, alien.width, alien.height);
-            }
-            else if(monsterNumber == 1){
-                context.drawImage(alienImg2, alien.x, alien.y, alien.width, alien.height);
-            }
-            else if(monsterNumber == 2){
-                context.drawImage(alienImg3, alien.x, alien.y, alien.width, alien.height);
-            }
-            else if(monsterNumber == 3){
-                context.drawImage(alienImg4, alien.x, alien.y, alien.width, alien.height);
-            }
-            else if(monsterNumber == 4){
-                context.drawImage(alienImg5, alien.x, alien.y, alien.width, alien.height);
-            }
-            else if(monsterNumber == 5){
-                context.drawImage(alienImg6, alien.x, alien.y, alien.width, alien.height);
-            }
-            else if(monsterNumber == 6){
-                context.drawImage(alienImg7, alien.x, alien.y, alien.width, alien.height);
-            }
-            else if(monsterNumber == 7){
-                context.drawImage(alienImg8, alien.x, alien.y, alien.width, alien.height);
-            }
-            // else if(monsterNumber == 8){
-            //     context.drawImage(alienImg9, alien.x, alien.y, alien.width, alien.height);
-            // }
-            if (alien.y >= ship.y) {
-                gameOver = true;
-            }
+        //move all aliens up by one row
+        for (let j = 0; j < alienArray.length; j++) {
+          alienArray[j].y += alienHeight;
         }
+      }
+
+      if (monsterNumber == 0) {
+        context.drawImage(alienImg, alien.x, alien.y, alien.width, alien.height);
+      }
+      else if (monsterNumber == 1) {
+        context.drawImage(alienImg2, alien.x, alien.y, alien.width, alien.height);
+      }
+      else if (monsterNumber == 2) {
+        context.drawImage(alienImg3, alien.x, alien.y, alien.width, alien.height);
+      }
+      else if (monsterNumber == 3) {
+        context.drawImage(alienImg4, alien.x, alien.y, alien.width, alien.height);
+      }
+      else if (monsterNumber == 4) {
+        context.drawImage(alienImg5, alien.x, alien.y, alien.width, alien.height);
+      }
+      else if (monsterNumber == 5) {
+        context.drawImage(alienImg6, alien.x, alien.y, alien.width, alien.height);
+      }
+      else if (monsterNumber == 6) {
+        context.drawImage(alienImg7, alien.x, alien.y, alien.width, alien.height);
+      }
+      else if (monsterNumber == 7) {
+        context.drawImage(alienImg8, alien.x, alien.y, alien.width, alien.height);
+      }
+
+      if (alien.y >= ship.y) {
+        gameOver = true;
+      }
     }
+  }
 
   //Get change bullet button
   bulletSelectorButton = document.getElementById("bullet-selector");
@@ -195,7 +188,7 @@ function update() {
   //next level
   if (alienCount == 0) {
     // Ramdomize a number
-    randomNumber = getRandomInt(0,3);
+    randomNumber = Math.floor(Math.random() * 2) + 1;
 
     //increase the number of aliens in columns and rows by 1
     score += alienColumns * alienRows * 100; //bonus points :)
@@ -209,15 +202,15 @@ function update() {
     }
     alienArray = [];
     bulletArray = [];
-       monsterNumber = getRandomInt(0,8);
+    monsterNumber = getRandomInt(0, 8);
     createAliens();
-    }
 
     function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min) + min);
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min) + min);
     }
+  }
 
   //score
   context.fillStyle = "white";
@@ -232,7 +225,7 @@ function singleShot() {
   for (let i = 0; i < bulletArray.length; i++) {
     let bullet = bulletArray[i];
     bullet.y += bulletVelocityY;
-    context.fillStyle = "yellow";
+    context.fillStyle = "red";
     context.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
 
     bulletCollision(bullet);
@@ -246,12 +239,11 @@ function doubleShot() {
   for (let i = 0; i < bulletArray.length; i++) {
 
     let bullet = bulletArray[i];
-    bullet.y += bulletVelocityY * 1.25;        // Re update the velocity of the bullet
-    bullet.y2 += bulletVelocityY * 1.25;       // Re update the velocity of the bullet
-    bullet.x = ship.x + shipWidth * 12 / 32;  //Re update the out of the bullet
+    bullet.y += bulletVelocityY * 1.5;        // Re update the velocity of the bullet
+    bullet.y2 += bulletVelocityY * 1.5;       // Re update the velocity of the bullet
+    bullet.x = ship.x + shipWidth * 13 / 32;  //Re update the out of the bullet
     bullet.x2 = ship.x + shipWidth * 17 / 32;  //Re update the out of the bullet
     context.fillStyle = "white";
-    bullet.width = tileSize / 6;
 
     context.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
     context.fillRect(bullet.x2, bullet.y2, bullet.width, bullet.height)
@@ -279,12 +271,12 @@ function moveShip(e) {
     return;
   }
 
-    if (e.code == "ArrowLeft" || e.code == "KeyA" && ship.x - shipVelocityX >= 0) {
-        ship.x -= shipVelocityX; //move left one tile
-    }
-    else if (e.code == "ArrowRight" || e.code == "KeyD" && ship.x + shipVelocityX + ship.width <= board.width) {
-        ship.x += shipVelocityX; //move right one tile
-    }
+  if (e.code == "ArrowLeft" && ship.x - shipVelocityX >= 0) {
+    ship.x -= shipVelocityX; //move left one tile
+  }
+  else if (e.code == "ArrowRight" && ship.x + shipVelocityX + ship.width <= board.width) {
+    ship.x += shipVelocityX; //move right one tile
+  }
 }
 
 function createAliens() {
@@ -309,14 +301,14 @@ function shoot(e) {
     return;
   }
 
-  if (e.code == "Space"  || e.code == "KeyW") {
+  if (e.code == "Space") {
     //shoot
     let bullet = {
       x: ship.x + shipWidth * 15 / 32,
       x2: ship.x + shipWidth * 15 / 32,
       y: ship.y,
       y2: ship.y,
-      width: tileSize / 4,
+      width: tileSize / 8,
       height: tileSize / 2,
       used: false
     }
@@ -324,6 +316,7 @@ function shoot(e) {
 
   }
 }
+
 function detectCollision(a, b) {
   return a.x < b.x + b.width &&   //a's top left corner doesn't reach b's top right corner
     a.x + a.width > b.x &&   //a's top right corner passes b's top left corner
