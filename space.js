@@ -88,8 +88,8 @@ window.onload = function() {
     alienImg7.src = "./alien7.png";
     alienImg8 = new Image();
     alienImg8.src = "./alien8.png";
-    alienImg9 = new Image();
-    alienImg9.src = "./alien9.png";
+    // alienImg9 = new Image();
+    // alienImg9.src = "./alien9.png";
 
     createAliens();
 
@@ -167,9 +167,9 @@ function update() {
             else if(monsterNumber == 7){
                 context.drawImage(alienImg8, alien.x, alien.y, alien.width, alien.height);
             }
-            else if(monsterNumber == 8){
-                context.drawImage(alienImg9, alien.x, alien.y, alien.width, alien.height);
-            }
+            // else if(monsterNumber == 8){
+            //     context.drawImage(alienImg9, alien.x, alien.y, alien.width, alien.height);
+            // }
             if (alien.y >= ship.y) {
                 gameOver = true;
             }
