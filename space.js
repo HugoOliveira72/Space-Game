@@ -271,10 +271,10 @@ function moveShip(e) {
     return;
   }
 
-  if (e.code == "ArrowLeft" && ship.x - shipVelocityX >= 0) {
+  if (e.code == "ArrowLeft" || e.code == "KeyA" && ship.x - shipVelocityX >= 0) {
     ship.x -= shipVelocityX; //move left one tile
   }
-  else if (e.code == "ArrowRight" && ship.x + shipVelocityX + ship.width <= board.width) {
+  else if (e.code == "ArrowRight" || e.code == "KeyD" && ship.x + shipVelocityX + ship.width <= board.width) {
     ship.x += shipVelocityX; //move right one tile
   }
 }
@@ -301,7 +301,7 @@ function shoot(e) {
     return;
   }
 
-  if (e.code == "Space") {
+  if (e.code == "Space" || e.code == "KeyW") {
     //shoot
     let bullet = {
       x: ship.x + shipWidth * 15 / 32,
