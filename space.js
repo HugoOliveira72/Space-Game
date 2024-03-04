@@ -41,7 +41,7 @@ let alienVelocityX = 3; //alien moving speed
 //bullets
 let bulletArray = [];
 let bulletVelocityY = -20; //bullet moving speed
-let rate = 375; // cadence of the bullet in ms
+let rate = 200; // cadence of the bullet in ms
 
 // let lastChangebullet;
 // let bulletDuration = 3000;
@@ -195,7 +195,7 @@ function update() {
   //next level
   if (alienCount == 0) {
     // Ramdomize a number
-    randomNumber = Math.floor(Math.random() * 2) + 1;
+    randomNumber = getRandomInt(0,3);
 
     //increase the number of aliens in columns and rows by 1
     score += alienColumns * alienRows * 100; //bonus points :)
@@ -209,7 +209,7 @@ function update() {
     }
     alienArray = [];
     bulletArray = [];
-       monsterNumber = getRandomInt(0,7);
+       monsterNumber = getRandomInt(0,8);
     createAliens();
     }
 
