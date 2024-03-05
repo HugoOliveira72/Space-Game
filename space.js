@@ -13,7 +13,7 @@ let context;
 let shipWidth = tileSize * 2;
 let shipHeight = tileSize * 2;
 let shipX = tileSize * columns / 2 - tileSize;
-let shipY = tileSize * rows - tileSize * 2;
+let shipY = tileSize * rows - tileSize * 3;
 
 let ship = {
   x: shipX,
