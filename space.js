@@ -66,33 +66,33 @@ window.onload = function () {
 
   //load images
   shipImg = new Image();
-  shipImg.src = "./ship.png";
+  shipImg.src = "./images/ship.png";
   shipImg.onload = function () {
     context.drawImage(shipImg, ship.x, ship.y, ship.width, ship.height);
   }
 
   alienImg = new Image();
-  alienImg.src = "./alien.png";
+  alienImg.src = "./images/alien.png";
   alienImg2 = new Image();
-  alienImg2.src = "./alien2.png";
+  alienImg2.src = "./images/alien2.png";
   alienImg3 = new Image();
-  alienImg3.src = "./alien3.png";
+  alienImg3.src = "./images/alien3.png";
   alienImg4 = new Image();
-  alienImg4.src = "./alien4.png";
+  alienImg4.src = "./images/alien4.png";
   alienImg5 = new Image();
-  alienImg5.src = "./alien5.png";
+  alienImg5.src = "./images/alien5.png";
   alienImg6 = new Image();
-  alienImg6.src = "./alien6.png";
+  alienImg6.src = "./images/alien6.png";
   alienImg7 = new Image();
-  alienImg7.src = "./alien7.png";
+  alienImg7.src = "./images/alien7.png";
   alienImg8 = new Image();
-  alienImg8.src = "./alien8.png";
+  alienImg8.src = "./images/alien8.png";
   alienImg9 = new Image();
-  alienImg9.src = "./alien9.png";
+  alienImg9.src = "./images/alien9.png";
   alienImg10 = new Image();
-  alienImg10.src = "./alien10.png";
+  alienImg10.src = "./images/alien10.png";
   alienImg11 = new Image();
-  alienImg11.src = "./alien11.png";
+  alienImg11.src = "./images/alien11.png";
   createAliens();
 
   requestAnimationFrame(update);
