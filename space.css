@@ -14,22 +14,6 @@ body {
   background-size: 1024px 1024px;
 };
 
-.bullet-selector {
-  width: auto;
-  height: 50px;
-  background-color: #f5f5f5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  margin-left: 60%;
-}
-
-.img_shot {
-  width: 40px;
-  height: 40px;
-}
-
 #overlay {
   display: none;
   position: fixed;
@@ -43,12 +27,11 @@ body {
   z-index: 2; /*appears above the game*/
 }
 
-
 #popup {
   display: none;
   position: fixed;
-  width: 250px;
-  height: 250px;
+  width: 500px;
+  height: 400px;
   background: rgba(128, 128, 128, 0.7);
   border-radius: 10px;
   padding: 20px;
@@ -66,10 +49,15 @@ body {
   margin-right: 10px;
   margin-left: 10px;
   font-family: '8bitsFont', sans-serif;
-  font-size: small;
+  font-size: large;
+  height: 8%;
+  width: 40%;
+  border-radius: 10%;
 }
 
 #title{
-  margin-top: 20px;
+  margin-top: 20%;
   font-family: '8bitsFont', sans-serif;
+  font-size: 3rem;
+  color: white;
 }
