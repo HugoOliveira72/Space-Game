@@ -379,8 +379,8 @@ function shoot(e) {
       x2: ship.x + shipWidth * 15 / 32,
       y: ship.y,
       y2: ship.y,
-      width: tileSize / 8,
-      height: tileSize / 2,
+      width: tileSize / 6,
+      height: tileSize / 1.5,
       used: false
     }
     bulletArray.push(bullet);
