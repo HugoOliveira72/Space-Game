@@ -46,7 +46,7 @@ let rate = 200; // cadence of the bullet in ms
 // let lastChangebullet;
 // let bulletDuration = 3000;
 // let arrayCurrentAndLastRandomNumber = [0, 0];
-var randomNumber = Math.floor(Math.random() * 2) + 1;;
+var randomNumber = Math.floor(Math.random() * 5) + 1;;
 
 
 //other
@@ -185,15 +185,20 @@ function update() {
     }
   }
 
-  //Get change bullet button
-  bulletSelectorButton = document.getElementById("bullet-selector");
 
   if (randomNumber === 1) {
     singleShot();
-    bulletSelectorButton.innerHTML = '<img src="bullet_rifle.png" class="img_shot" alt="">';
   } else if (randomNumber === 2) {
     doubleShot();
-    bulletSelectorButton.innerHTML = '<img src="double-bullet.png" class="img_shot" alt="">';
+  }
+  else if(randomNumber === 3){
+    irregularShot();
+  }
+  else if(randomNumber === 4){
+    leftShot();
+  }
+  else if(randomNumber === 5){
+    rightShot();
   }
 
   //clear bullets
@@ -204,7 +209,7 @@ function update() {
   //next level
   if (alienCount == 0) {
     // Ramdomize a number
-    randomNumber = Math.floor(Math.random() * 2) + 1;
+    randomNumber = Math.floor(Math.random() * 5) + 1;
 
     //increase the number of aliens in columns and rows by 1
     score += alienColumns * alienRows * 100; //bonus points :)
@@ -230,13 +235,13 @@ function update() {
 
   //score
   context.fillStyle = "white";
-  context.font = "16px courier";
-  context.fillText(score, 5, 20);
+  context.font = "bold 32px courier";
+  context.fillText(score, 5, 40);
 }
 
 function singleShot() {
   //single shoot
-  rate = 375; //slow down the rate of the shoot
+  rate = 150; //slow down the rate of the shoot
   lastChangebullet = Date.now(); // Receive the last change time
   for (let i = 0; i < bulletArray.length; i++) {
     let bullet = bulletArray[i];
@@ -252,11 +257,46 @@ function irregularShot() {
   //single shoot
   rate = 375; //slow down the rate of the shoot
   lastChangebullet = Date.now(); // Receive the last change time
+  // bullet.width = 10;
+  // bullet.height = 10;
   for (let i = 0; i < bulletArray.length; i++) {
     let bullet = bulletArray[i];
     bullet.y += bulletVelocityY;
-    bullet.x += 1;
-    context.fillStyle = "red";
+    if(i%2 == 0){
+      bullet.x += 4;
+    }
+    else
+    {
+      bullet.x -= 4;
+    }
+
+    context.fillStyle = "black";
+    context.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+
+    bulletCollision(bullet);
+  }
+}function leftShot() {
+  //single shoot
+  rate = 375; //slow down the rate of the shoot
+  lastChangebullet = Date.now(); // Receive the last change time
+  for (let i = 0; i < bulletArray.length; i++) {
+    let bullet = bulletArray[i];
+    bullet.y += bulletVelocityY;
+    bullet.x += 5;
+    context.fillStyle = "black";
+    context.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+
+    bulletCollision(bullet);
+  }
+}function rightShot() {
+  //single shoot
+  rate = 375; //slow down the rate of the shoot
+  lastChangebullet = Date.now(); // Receive the last change time
+  for (let i = 0; i < bulletArray.length; i++) {
+    let bullet = bulletArray[i];
+    bullet.y += bulletVelocityY;
+    bullet.x -= 5;
+    context.fillStyle = "black";
     context.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
 
     bulletCollision(bullet);
