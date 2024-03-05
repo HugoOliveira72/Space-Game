@@ -86,6 +86,13 @@ window.onload = function () {
   alienImg7 = new Image();
   alienImg7.src = "./alien7.png";
   alienImg8 = new Image();
+  alienImg8.src = "./alien8.png";
+  alienImg9 = new Image();
+  alienImg9.src = "./alien9.png";
+  alienImg10 = new Image();
+  alienImg10.src = "./alien10.png";
+  alienImg11 = new Image();
+  alienImg11.src = "./alien11.png";
   createAliens();
 
   requestAnimationFrame(update);
@@ -162,6 +169,15 @@ function update() {
       else if (monsterNumber == 7) {
         context.drawImage(alienImg8, alien.x, alien.y, alien.width, alien.height);
       }
+      else if (monsterNumber == 8) {
+        context.drawImage(alienImg9, alien.x, alien.y, alien.width, alien.height);
+      }
+      else if (monsterNumber == 9) {
+        context.drawImage(alienImg10, alien.x, alien.y, alien.width, alien.height);
+      }
+      else if (monsterNumber == 10) {
+        context.drawImage(alienImg11, alien.x, alien.y, alien.width, alien.height);
+      }
 
       if (alien.y >= ship.y) {
         gameOver = true;
@@ -202,7 +218,7 @@ function update() {
     }
     alienArray = [];
     bulletArray = [];
-    monsterNumber = getRandomInt(0, 8);
+    monsterNumber = getRandomInt(0, 10);
     createAliens();
 
     function getRandomInt(min, max) {
@@ -225,6 +241,21 @@ function singleShot() {
   for (let i = 0; i < bulletArray.length; i++) {
     let bullet = bulletArray[i];
     bullet.y += bulletVelocityY;
+    context.fillStyle = "red";
+    context.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+
+    bulletCollision(bullet);
+  }
+}
+
+function irregularShot() {
+  //single shoot
+  rate = 375; //slow down the rate of the shoot
+  lastChangebullet = Date.now(); // Receive the last change time
+  for (let i = 0; i < bulletArray.length; i++) {
+    let bullet = bulletArray[i];
+    bullet.y += bulletVelocityY;
+    bullet.x += 1;
     context.fillStyle = "red";
     context.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
 
