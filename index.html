@@ -57,6 +57,41 @@
     border-radius: 10%;
   }
 
+  #botaozin {
+    margin-top: 12px;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-family: '8BIT WONDER', sans-serif;
+    font-size: 70px;
+    height: 80px;
+    width: 8%;
+    border-radius: 10%;
+    background: url(https://static.wixstatic.com/media/452e23_106d0071de2846b29b6d348a210b5d41~mv2.png);
+    background-size: 50px 50px;
+  }
+  #botaoEsquerdo {
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-family: '8BIT WONDER', sans-serif;
+    font-size: 70px;
+    height: 80px;
+    width: 8%;
+    border-radius: 10%;
+    text-align: center;
+
+  }
+  #botaoDireito {
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-family: '8BIT WONDER', sans-serif;
+    font-size: 70px;
+    height: 80px;
+    width: 8%;
+    border-radius: 10%;
+    text-align: center;
+  }
   #title {
     margin-top: 20%;
     font-family: '8BIT WONDER', sans-serif;
@@ -170,6 +205,8 @@
 
       requestAnimationFrame(update);
       document.addEventListener("keydown", moveShip);
+      document.addEventListener("keydown", moveShipLeft);
+      document.addEventListener("keydown", moveShipRight);
 
       // Wait a amount of seconds to the next shoot (Only Works Single shoot mode) RATE variable
       let lastShootTime = 0;
@@ -421,7 +458,36 @@
         ship.x += shipVelocityX; //move right one tile
       }
     }
+    function moveShipLeft(e) {
+      if (gameOver) {
+        return;
+      }
+      ship.x -= shipVelocityX; //move left one tile
+      
+    }
+    function moveShipRight(e) {
+      if (gameOver) {
+        return;
+      }
+      ship.x += shipVelocityX; //move left one tile
+    }
+    function shootCelular(e) {
+      if (gameOver) {
+        return;
+      }
 
+        //shoot
+        let bullet = {
+          x: ship.x + shipWidth * 15 / 32,
+          x2: ship.x + shipWidth * 15 / 32,
+          y: ship.y,
+          y2: ship.y,
+          width: tileSize / 6,
+          height: tileSize / 1.5,
+          used: false
+        }
+        bulletArray.push(bullet);
+    }
     function createAliens() {
       for (let c = 0; c < alienColumns; c++) {
         for (let r = 0; r < alienRows; r++) {
@@ -438,7 +504,24 @@
       }
       alienCount = alienArray.length;
     }
+    
+    function shootCelular(e) {
+      if (gameOver) {
+        return;
+      }
 
+        //shoot
+        let bullet = {
+          x: ship.x + shipWidth * 15 / 32,
+          x2: ship.x + shipWidth * 15 / 32,
+          y: ship.y,
+          y2: ship.y,
+          width: tileSize / 6,
+          height: tileSize / 1.5,
+          used: false
+        }
+        bulletArray.push(bullet);
+    }
     function shoot(e) {
       if (gameOver) {
         return;
@@ -476,6 +559,14 @@
       // Fechar o pop-up
       window.close();
     }
+    function leftClicked() {
+      // Fechar o pop-up
+      window.close();
+    }
+    function rightClicked() {
+      // Fechar o pop-up
+      window.close();
+    }
   </script>
 </head>
 
@@ -491,6 +582,12 @@
   </div>
 
   <canvas id="board"></canvas>
+  <div> 
+    <button id="botaoEsquerdo" class="btn" onclick="moveShipLeft()">	&larr;</button>
+    <button id="botaozin" class="btn" onclick="shootCelular()"></button>
+    <button id="botaoDireito" class="btn" onclick="moveShipRight()">&rarr;</button>
+  </div>
+
 </body>
 
 </html>
